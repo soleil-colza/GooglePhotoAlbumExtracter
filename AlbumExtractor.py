@@ -2,9 +2,13 @@ import os
 import requests
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+from dotenv import load_dotenv
 
-# サービスアカウントキーのファイルパス
-KEY_FILE = 'path_to_your_service_account_key.json'
+# .envファイルの内容を読み込む
+load_dotenv()
+
+# 環境変数からサービスアカウントキーのファイルパスを取得
+KEY_FILE = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
 # Google Photos APIのスコープ
 SCOPES = ['https://www.googleapis.com/auth/photoslibrary.readonly']
